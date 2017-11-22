@@ -77,6 +77,11 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         txtBirthdate = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        lblContactNo1 = new javax.swing.JLabel();
+        txtContact1 = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Delivery Man");
@@ -135,7 +140,6 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         cbGender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female" }));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\images.png")); // NOI18N
         jButton1.setText("Search");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +149,6 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         });
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\add.jpg")); // NOI18N
         jButton2.setText("Add");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +158,6 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         });
 
         jButton3.setBackground(new java.awt.Color(153, 153, 153));
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\Find01-512.png")); // NOI18N
         jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +167,6 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         });
 
         BtnUpdate.setBackground(new java.awt.Color(255, 255, 255));
-        BtnUpdate.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\update.png")); // NOI18N
         BtnUpdate.setText("Update");
         BtnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +214,6 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         lblCity.setText("City :");
 
         jLabel1.setFont(new java.awt.Font("Lucida Fax", 0, 15)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Downloads\\phoe.png")); // NOI18N
         jLabel1.setText("Contact Info.");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -299,13 +299,63 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         jLabel3.setText("(Format : DDMMYYYY)");
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\reset.png")); // NOI18N
         jButton4.setText("Reset");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
+
+        jPanel2.setBackground(java.awt.Color.white);
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel4.setText("Delivery Info.");
+
+        lblContactNo1.setText("Status:");
+
+        txtContact1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtContact1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtContact1KeyTyped(evt);
+            }
+        });
+
+        jButton6.setText("View Delivery");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(lblContactNo1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton6)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtContact1)
+                            .addComponent(jLabel4))
+                        .addGap(25, 25, 25))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblContactNo1)
+                    .addComponent(txtContact1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout BtnSearchNameLayout = new javax.swing.GroupLayout(BtnSearchName);
         BtnSearchName.setLayout(BtnSearchNameLayout);
@@ -352,9 +402,6 @@ public class AddDeliveryMan extends javax.swing.JFrame {
                                 .addGap(284, 284, 284)))
                         .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(BtnSearchNameLayout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(BtnSearchNameLayout.createSequentialGroup()
                                 .addGap(95, 95, 95)
                                 .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblStatus)
@@ -365,7 +412,12 @@ public class AddDeliveryMan extends javax.swing.JFrame {
                                     .addGroup(BtnSearchNameLayout.createSequentialGroup()
                                         .addComponent(rbYes)
                                         .addGap(30, 30, 30)
-                                        .addComponent(rbNo))))))
+                                        .addComponent(rbNo))))
+                            .addGroup(BtnSearchNameLayout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(BtnSearchNameLayout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -434,6 +486,8 @@ public class AddDeliveryMan extends javax.swing.JFrame {
                         .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblReason)
                             .addComponent(cbReason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
 
@@ -610,6 +664,14 @@ public class AddDeliveryMan extends javax.swing.JFrame {
     private void txtBirthdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBirthdateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBirthdateActionPerformed
+
+    private void txtContact1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContact1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContact1KeyPressed
+
+    private void txtContact1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContact1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContact1KeyTyped
     
     public void clearData()
     {
@@ -837,14 +899,18 @@ public class AddDeliveryMan extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel jcGender;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblContactNo;
+    private javax.swing.JLabel lblContactNo1;
     private javax.swing.JLabel lblIC;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblName;
@@ -861,6 +927,7 @@ public class AddDeliveryMan extends javax.swing.JFrame {
     private javax.swing.JTextField txtBirthdate;
     private javax.swing.JTextField txtCityy;
     private javax.swing.JTextField txtContact;
+    private javax.swing.JTextField txtContact1;
     private javax.swing.JTextField txtHomeTel;
     private javax.swing.JTextField txtIc;
     private javax.swing.JTextField txtId;
