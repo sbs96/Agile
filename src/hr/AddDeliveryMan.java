@@ -101,7 +101,7 @@ public class AddDeliveryMan extends javax.swing.JFrame {
 
         jcGender.setText("Gender :");
 
-        lblStatus.setText("Status :");
+        lblStatus.setText("Active :");
         lblStatus.setToolTipText("");
 
         lblReason.setText("Reason :");
@@ -336,7 +336,7 @@ public class AddDeliveryMan extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(111, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtContact1)
@@ -499,7 +499,7 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BtnSearchName, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+            .addComponent(BtnSearchName, javax.swing.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE)
         );
 
         pack();
