@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -49,18 +49,22 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
-                      <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="745" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Component id="lbl" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblTime" min="-2" pref="154" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
+                          <Component id="lblD" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="lblDate" min="-2" pref="108" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="356" max="32767" attributes="0"/>
+                  <EmptySpace pref="169" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -75,10 +79,12 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbl" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblD" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDate" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="83" max="32767" attributes="0"/>
+                  <EmptySpace pref="76" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -89,7 +95,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Franklin Gothic Book" size="24" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Pending Deliveries"/>
+            <Property name="text" type="java.lang.String" value="Pending Delivery"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -102,12 +108,45 @@
             <Component class="javax.swing.JTable" name="tbPending">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
-                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                  <Table columnCount="5" rowCount="0">
+                    <Column editable="false" title="CustomerName" type="java.lang.Object"/>
+                    <Column editable="true" title="RestaurantName" type="java.lang.Object"/>
+                    <Column editable="true" title="DeliveryMan" type="java.lang.Object"/>
+                    <Column editable="true" title="State" type="java.lang.Object"/>
+                    <Column editable="true" title="Time" type="java.lang.Object"/>
                   </Table>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
             </Component>
@@ -115,7 +154,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="lbl">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Latest time:"/>
+            <Property name="text" type="java.lang.String" value="Last update tme:"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
@@ -133,20 +172,14 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="lblState" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="cbState" min="-2" pref="111" max="-2" attributes="0"/>
-                      <EmptySpace pref="60" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="lblDeliveryMan" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="cbDeliveryMan" min="-2" pref="68" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                      <Component id="lblRestaurant" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="cbRestaurant" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="btnFilter" min="-2" pref="71" max="-2" attributes="0"/>
+                      <EmptySpace pref="63" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -155,12 +188,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblState" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbState" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDeliveryMan" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cbDeliveryMan" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRestaurant" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbRestaurant" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnFilter" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -168,36 +198,6 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblState">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="State :"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cbState">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="14">
-                    <StringItem index="0" value="Kuala Lumpur"/>
-                    <StringItem index="1" value="Johor"/>
-                    <StringItem index="2" value="Kedah"/>
-                    <StringItem index="3" value="Kelantan"/>
-                    <StringItem index="4" value="Malacca"/>
-                    <StringItem index="5" value="Negeri Sembilan"/>
-                    <StringItem index="6" value="Pahang"/>
-                    <StringItem index="7" value="Perak"/>
-                    <StringItem index="8" value="Perlis"/>
-                    <StringItem index="9" value="Penang"/>
-                    <StringItem index="10" value="Sabah"/>
-                    <StringItem index="11" value="Sarawak"/>
-                    <StringItem index="12" value="Selangor"/>
-                    <StringItem index="13" value="Terengganu"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbStateActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JLabel" name="lblDeliveryMan">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Delivery Man:"/>
@@ -206,9 +206,10 @@
             <Component class="javax.swing.JComboBox" name="cbDeliveryMan">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Evon"/>
-                    <StringItem index="1" value="sbs"/>
+                  <StringArray count="3">
+                    <StringItem index="0" value="All"/>
+                    <StringItem index="1" value="evon"/>
+                    <StringItem index="2" value="sbs"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -216,27 +217,32 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblRestaurant">
+            <Component class="javax.swing.JButton" name="btnFilter">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Restaurant :"/>
+                <Property name="mnemonic" type="int" value="70"/>
+                <Property name="text" type="java.lang.String" value="Filter"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cbRestaurant">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Sushi King"/>
-                    <StringItem index="1" value="llao llao"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFilterActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="lblTime">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblD">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Date :"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
+            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+          </AccessibilityProperties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel1"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

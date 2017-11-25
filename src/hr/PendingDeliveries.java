@@ -7,6 +7,10 @@ package hr;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import javax.swing.*;
+import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,16 +24,129 @@ public class PendingDeliveries extends javax.swing.JFrame {
     public PendingDeliveries() {
         initComponents();
         Time();
+        show_List();
     }
             
     public void Time()
     {
         Calendar cal = Calendar.getInstance(); 
         cal.getTime(); 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"); 
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss"); 
+        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy"); 
+        String Date = date.format(cal.getTime());
         String Time = sdf.format(cal.getTime());
         lblTime.setText(Time);
+        lblDate.setText(Date);
     }
+    
+    public ArrayList<Pending> PendingList()
+    {
+        ArrayList<Pending> PendingList = new ArrayList();
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        String s;
+        try{
+            
+            String host = "jdbc:derby://localhost:1527/collegedb";
+            String user = "nbuser";
+            String password = "nbuser";
+            
+            conn = DriverManager.getConnection(host, user, password);
+            stmt = conn.createStatement();
+            s = "SELECT * FROM DELIVERY WHERE STATUS = 'Pending'";
+            rs = stmt.executeQuery(s);
+            Pending pending;
+            while(rs.next())
+            {
+                pending = new Pending(rs.getString("CustomerName"),rs.getString("RestaurantName"),rs.getString("DeliveryMan"),rs.getString("State"),rs.getString("Time"));
+                PendingList.add(pending);
+            }
+
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Error. "+e);
+        }
+        return PendingList;
+    }
+    
+    public void show_List()
+    {
+        ArrayList<Pending> list = PendingList();
+        DefaultTableModel model = (DefaultTableModel)tbPending.getModel();
+        Object[] row = new Object[6];
+        for(int i=0;i<list.size();i++){
+            row[0] = list.get(i).getCustomerName();
+            row[1] = list.get(i).getRestaurantName();
+            row[2] = list.get(i).getDeliveryMan();
+            row[3] = list.get(i).getState();
+            row[4] = list.get(i).getTime();
+            model.addRow(row);
+        }
+    
+    }
+    
+    public ArrayList<Pending> DeliveryMan()
+    {
+        ArrayList<Pending> PendingList = new ArrayList();
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        String s;
+        String Man = String.valueOf(cbDeliveryMan.getSelectedItem());
+        try{
+            
+            String host = "jdbc:derby://localhost:1527/collegedb";
+            String user = "nbuser";
+            String password = "nbuser";
+            
+            conn = DriverManager.getConnection(host, user, password);
+            stmt = conn.createStatement();
+            s = "SELECT * FROM DELIVERY WHERE status = 'Pending'and DeliveryMan ='"+Man+"'";
+            rs = stmt.executeQuery(s);
+            
+            
+            Pending pending;
+            while(rs.next())
+            {
+                pending = new Pending(rs.getString("CustomerName"),rs.getString("RestaurantName"),rs.getString("DeliveryMan"),rs.getString("State"),rs.getString("Time"));
+                PendingList.add(pending);
+            }
+
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Error. "+e);
+        }
+        return PendingList;
+    }
+    
+    public void clearTable()
+    {
+        DefaultTableModel dm = (DefaultTableModel)tbPending.getModel();
+        int rowCount = dm.getRowCount();
+        //Remove rows one by one from the end of the table
+        for (int i = rowCount - 1; i >= 0; i--) {
+        dm.removeRow(i);
+        }
+    }
+    
+    public void show_Delivery()
+    {
+        ArrayList<Pending> list = DeliveryMan();
+        DefaultTableModel model = (DefaultTableModel)tbPending.getModel();
+        Object[] row = new Object[6];
+        for(int i=0;i<list.size();i++){
+            row[0] = list.get(i).getCustomerName();
+            row[1] = list.get(i).getRestaurantName();
+            row[2] = list.get(i).getDeliveryMan();
+            row[3] = list.get(i).getState();
+            row[4] = list.get(i).getTime();
+            model.addRow(row);
+        }
+    
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,13 +162,12 @@ public class PendingDeliveries extends javax.swing.JFrame {
         tbPending = new javax.swing.JTable();
         lbl = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        lblState = new javax.swing.JLabel();
-        cbState = new javax.swing.JComboBox();
         lblDeliveryMan = new javax.swing.JLabel();
         cbDeliveryMan = new javax.swing.JComboBox<>();
-        lblRestaurant = new javax.swing.JLabel();
-        cbRestaurant = new javax.swing.JComboBox<>();
+        btnFilter = new javax.swing.JButton();
         lblTime = new javax.swing.JLabel();
+        lblD = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,91 +175,90 @@ public class PendingDeliveries extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         lblTitle.setFont(new java.awt.Font("Franklin Gothic Book", 0, 24)); // NOI18N
-        lblTitle.setText("Pending Deliveries");
+        lblTitle.setText("Pending Delivery");
 
         tbPending.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "CustomerName", "RestaurantName", "DeliveryMan", "State", "Time"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tbPending);
 
-        lbl.setText("Latest time:");
+        lbl.setText("Last update tme:");
 
         jPanel2.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.inactiveTitleGradient"));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lblState.setText("State :");
-
-        cbState.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kuala Lumpur", "Johor", "Kedah", "Kelantan", "Malacca", "Negeri Sembilan", "Pahang", "Perak", "Perlis", "Penang", "Sabah", "Sarawak", "Selangor", "Terengganu" }));
-        cbState.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbStateActionPerformed(evt);
-            }
-        });
-
         lblDeliveryMan.setText("Delivery Man:");
 
-        cbDeliveryMan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Evon", "sbs" }));
+        cbDeliveryMan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "evon", "sbs" }));
 
-        lblRestaurant.setText("Restaurant :");
-
-        cbRestaurant.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sushi King", "llao llao" }));
+        btnFilter.setMnemonic('F');
+        btnFilter.setText("Filter");
+        btnFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFilterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lblState)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbState, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addComponent(lblDeliveryMan)
                 .addGap(18, 18, 18)
                 .addComponent(cbDeliveryMan, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(lblRestaurant)
-                .addGap(18, 18, 18)
-                .addComponent(cbRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addGap(36, 36, 36)
+                .addComponent(btnFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblState)
-                    .addComponent(cbState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDeliveryMan)
                     .addComponent(cbDeliveryMan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRestaurant)
-                    .addComponent(cbRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnFilter))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        lblD.setText("Date :");
+
+        lblDate.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(lblTitle)
+                .addGap(160, 160, 160)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(356, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(300, 300, 300)
+                        .addComponent(lblD)
+                        .addGap(30, 30, 30)
+                        .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTitle))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,11 +270,16 @@ public class PendingDeliveries extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl)
-                    .addComponent(lblTime))
-                .addGap(26, 26, 26)
+                    .addComponent(lblTime)
+                    .addComponent(lblD)
+                    .addComponent(lblDate))
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
+
+        lblD.getAccessibleContext().setAccessibleName("");
+        lblD.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,11 +293,20 @@ public class PendingDeliveries extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbStateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbStateActionPerformed
+    private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
+        clearTable();
+        if(cbDeliveryMan.getSelectedIndex() == 0)
+        {
+            show_List();
+        }
+        else
+        {
+            show_Delivery();
+        }        
+    }//GEN-LAST:event_btnFilterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,16 +349,15 @@ public class PendingDeliveries extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFilter;
     private javax.swing.JComboBox<String> cbDeliveryMan;
-    private javax.swing.JComboBox<String> cbRestaurant;
-    private javax.swing.JComboBox cbState;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl;
+    private javax.swing.JLabel lblD;
+    private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblDeliveryMan;
-    private javax.swing.JLabel lblRestaurant;
-    private javax.swing.JLabel lblState;
     private javax.swing.JLabel lblTime;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tbPending;
