@@ -143,9 +143,10 @@ public class deleteItem extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-
-        String itemName=jTextField1.getText(); 
+        
         String userName=jTextField4.getText();
+        String itemName=jTextField1.getText(); 
+        
 
         try{
             String host="jdbc:derby://localhost:1527/foodDatabase";
