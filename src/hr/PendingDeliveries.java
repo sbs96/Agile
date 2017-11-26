@@ -26,56 +26,58 @@ public class PendingDeliveries extends javax.swing.JFrame {
         Time();
         show_List();
     }
-            
-    public void Time()
-    {
-        Calendar cal = Calendar.getInstance(); 
-        cal.getTime(); 
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss"); 
-        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy"); 
+
+    public PendingDeliveries(String name) {
+        this();
+        clearTable();
+        cbDeliveryMan.setSelectedItem(name);
+        show_Delivery();
+    }
+
+    public void Time() {
+        Calendar cal = Calendar.getInstance();
+        cal.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
         String Date = date.format(cal.getTime());
         String Time = sdf.format(cal.getTime());
         lblTime.setText(Time);
         lblDate.setText(Date);
     }
-    
-    public ArrayList<Pending> PendingList()
-    {
+
+    public ArrayList<Pending> PendingList() {
         ArrayList<Pending> PendingList = new ArrayList();
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
         String s;
-        try{
-            
+        try {
+
             String host = "jdbc:derby://localhost:1527/collegedb";
             String user = "nbuser";
             String password = "nbuser";
-            
+
             conn = DriverManager.getConnection(host, user, password);
             stmt = conn.createStatement();
-            s = "SELECT * FROM DELIVERY WHERE STATUS = 'Pending'";
+            s = "SELECT * FROM DELIVERY WHERE status = 'Pending'";
             rs = stmt.executeQuery(s);
             Pending pending;
-            while(rs.next())
-            {
-                pending = new Pending(rs.getString("CustomerName"),rs.getString("RestaurantName"),rs.getString("DeliveryMan"),rs.getString("State"),rs.getString("Time"));
+            while (rs.next()) {
+                pending = new Pending(rs.getString("CustomerName"), rs.getString("RestaurantName"), rs.getString("DeliveryMan"), rs.getString("State"), rs.getString("Time"));
                 PendingList.add(pending);
             }
 
-            
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error. "+e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error. " + e);
         }
         return PendingList;
     }
-    
-    public void show_List()
-    {
+
+    public void show_List() {
         ArrayList<Pending> list = PendingList();
-        DefaultTableModel model = (DefaultTableModel)tbPending.getModel();
+        DefaultTableModel model = (DefaultTableModel) tbPending.getModel();
         Object[] row = new Object[6];
-        for(int i=0;i<list.size();i++){
+        for (int i = 0; i < list.size(); i++) {
             row[0] = list.get(i).getCustomerName();
             row[1] = list.get(i).getRestaurantName();
             row[2] = list.get(i).getDeliveryMan();
@@ -83,59 +85,53 @@ public class PendingDeliveries extends javax.swing.JFrame {
             row[4] = list.get(i).getTime();
             model.addRow(row);
         }
-    
+
     }
-    
-    public ArrayList<Pending> DeliveryMan()
-    {
+
+    public ArrayList<Pending> DeliveryMan() {
         ArrayList<Pending> PendingList = new ArrayList();
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
         String s;
-        String Man = String.valueOf(cbDeliveryMan.getSelectedItem());
-        try{
-            
+        String man = (String) cbDeliveryMan.getSelectedItem();
+        try {
+
             String host = "jdbc:derby://localhost:1527/collegedb";
             String user = "nbuser";
             String password = "nbuser";
-            
+
             conn = DriverManager.getConnection(host, user, password);
             stmt = conn.createStatement();
-            s = "SELECT * FROM DELIVERY WHERE status = 'Pending'and DeliveryMan ='"+Man+"'";
+            s = "SELECT * FROM DELIVERY WHERE status = 'Pending' and DeliveryMan ='" + man + "'";
             rs = stmt.executeQuery(s);
-            
-            
+
             Pending pending;
-            while(rs.next())
-            {
-                pending = new Pending(rs.getString("CustomerName"),rs.getString("RestaurantName"),rs.getString("DeliveryMan"),rs.getString("State"),rs.getString("Time"));
+            while (rs.next()) {
+                pending = new Pending(rs.getString("CustomerName"), rs.getString("RestaurantName"), rs.getString("DeliveryMan"), rs.getString("State"), rs.getString("Time"));
                 PendingList.add(pending);
             }
 
-            
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error. "+e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error. " + e);
         }
         return PendingList;
     }
-    
-    public void clearTable()
-    {
-        DefaultTableModel dm = (DefaultTableModel)tbPending.getModel();
+
+    public void clearTable() {
+        DefaultTableModel dm = (DefaultTableModel) tbPending.getModel();
         int rowCount = dm.getRowCount();
         //Remove rows one by one from the end of the table
         for (int i = rowCount - 1; i >= 0; i--) {
-        dm.removeRow(i);
+            dm.removeRow(i);
         }
     }
-    
-    public void show_Delivery()
-    {
+
+    public void show_Delivery() {
         ArrayList<Pending> list = DeliveryMan();
-        DefaultTableModel model = (DefaultTableModel)tbPending.getModel();
+        DefaultTableModel model = (DefaultTableModel) tbPending.getModel();
         Object[] row = new Object[6];
-        for(int i=0;i<list.size();i++){
+        for (int i = 0; i < list.size(); i++) {
             row[0] = list.get(i).getCustomerName();
             row[1] = list.get(i).getRestaurantName();
             row[2] = list.get(i).getDeliveryMan();
@@ -143,10 +139,9 @@ public class PendingDeliveries extends javax.swing.JFrame {
             row[4] = list.get(i).getTime();
             model.addRow(row);
         }
-    
+
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -202,7 +197,7 @@ public class PendingDeliveries extends javax.swing.JFrame {
 
         lblDeliveryMan.setText("Delivery Man:");
 
-        cbDeliveryMan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "evon", "sbs" }));
+        cbDeliveryMan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "evon", "sbs", "Wong CK" }));
 
         btnFilter.setMnemonic('F');
         btnFilter.setText("Filter");
@@ -298,14 +293,11 @@ public class PendingDeliveries extends javax.swing.JFrame {
 
     private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
         clearTable();
-        if(cbDeliveryMan.getSelectedIndex() == 0)
-        {
+        if (cbDeliveryMan.getSelectedIndex() == 0) {
             show_List();
-        }
-        else
-        {
+        } else {
             show_Delivery();
-        }        
+        }
     }//GEN-LAST:event_btnFilterActionPerformed
 
     /**
@@ -344,8 +336,7 @@ public class PendingDeliveries extends javax.swing.JFrame {
             }
 
         });
-        
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
