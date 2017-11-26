@@ -26,9 +26,9 @@ public class deleteItem extends javax.swing.JFrame {
         initComponents();
     }
  private void clearText()
-    {
-        jTextField1.setText("");
+    {        
         jTextField4.setText(""); 
+        jTextField1.setText("");
     
     }
     /**
