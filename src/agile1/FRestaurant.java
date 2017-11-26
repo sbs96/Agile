@@ -20,6 +20,7 @@ public class FRestaurant extends javax.swing.JFrame {
 
     FMenuItem menu = new FMenuItem();
     
+    
     /**
      * Creates new form NewJFrame
      */
@@ -351,7 +352,7 @@ public class FRestaurant extends javax.swing.JFrame {
         menu.setRes(jlResName1.getText());
         menu.getMenu(jlResName1.getText());
         menu.setVisible(true);
-        
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
@@ -366,6 +367,7 @@ public class FRestaurant extends javax.swing.JFrame {
         menu.setRes(jlResName2.getText());
         menu.getMenu(jlResName2.getText());
         menu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
@@ -373,6 +375,7 @@ public class FRestaurant extends javax.swing.JFrame {
         menu.setRes(jlResName3.getText());
         menu.getMenu(jlResName3.getText());
         menu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
@@ -380,6 +383,7 @@ public class FRestaurant extends javax.swing.JFrame {
         menu.setRes(jlResName4.getText());
         menu.getMenu(jlResName4.getText());
         menu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -387,6 +391,7 @@ public class FRestaurant extends javax.swing.JFrame {
         menu.setRes(jlResName6.getText());
         menu.getMenu(jlResName6.getText());
         menu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -394,6 +399,7 @@ public class FRestaurant extends javax.swing.JFrame {
         menu.setRes(jlResName7.getText());
         menu.getMenu(jlResName7.getText());
         menu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
@@ -401,6 +407,7 @@ public class FRestaurant extends javax.swing.JFrame {
         menu.setRes(jlResName8.getText());
         menu.getMenu(jlResName8.getText());
         menu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
