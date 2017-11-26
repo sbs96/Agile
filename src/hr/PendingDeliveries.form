@@ -206,10 +206,11 @@
             <Component class="javax.swing.JComboBox" name="cbDeliveryMan">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
+                  <StringArray count="4">
                     <StringItem index="0" value="All"/>
                     <StringItem index="1" value="evon"/>
                     <StringItem index="2" value="sbs"/>
+                    <StringItem index="3" value="Wong CK"/>
                   </StringArray>
                 </Property>
               </Properties>

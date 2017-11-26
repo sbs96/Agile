@@ -14,12 +14,13 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.sql.*;
+
 /**
  *
  * @author YUNNI
  */
 public class AddDeliveryMan extends javax.swing.JFrame {
-
+    
     private Connection conn;
     private PreparedStatement stmt;
     private String sqlStr;
@@ -31,7 +32,6 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         rbNo.setSelected(false);
         cbReason.setEnabled(false);
     }
-
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -80,7 +80,7 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         lblContactNo1 = new javax.swing.JLabel();
-        txtContact1 = new javax.swing.JTextField();
+        txtStatus = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -314,16 +314,23 @@ public class AddDeliveryMan extends javax.swing.JFrame {
 
         lblContactNo1.setText("Status:");
 
-        txtContact1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtStatus.setEditable(false);
+        txtStatus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtContact1KeyPressed(evt);
+                txtStatusKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtContact1KeyTyped(evt);
+                txtStatusKeyTyped(evt);
             }
         });
 
         jButton6.setText("View Delivery");
+        jButton6.setEnabled(false);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -339,7 +346,7 @@ public class AddDeliveryMan extends javax.swing.JFrame {
                         .addContainerGap(111, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtContact1)
+                            .addComponent(txtStatus)
                             .addComponent(jLabel4))
                         .addGap(25, 25, 25))))
         );
@@ -351,7 +358,7 @@ public class AddDeliveryMan extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblContactNo1)
-                    .addComponent(txtContact1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -505,16 +512,15 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-       
-    public ImageIcon ResizeImage(String ImagePath)
-    {
+
+    public ImageIcon ResizeImage(String ImagePath) {
         ImageIcon MyImage = new ImageIcon(ImagePath);
         Image img = MyImage.getImage();
-        Image newImg = img.getScaledInstance(Picturebox.getWidth(), Picturebox.getHeight(),Image.SCALE_SMOOTH);
+        Image newImg = img.getScaledInstance(Picturebox.getWidth(), Picturebox.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon image = new ImageIcon(newImg);
         return image;
     }
-    
+
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         JFileChooser file = new JFileChooser();
         file.setCurrentDirectory(new File(System.getProperty("user.home")));
@@ -526,42 +532,40 @@ public class AddDeliveryMan extends javax.swing.JFrame {
             String path = selectedFile.getAbsolutePath();
             Picturebox.setIcon(ResizeImage(path));
             
-        }
-        else if(result == JFileChooser.CANCEL_OPTION)
-        {
-            JOptionPane.showMessageDialog(null, "No file selected.","Warning", JOptionPane.INFORMATION_MESSAGE);
+        } else if (result == JFileChooser.CANCEL_OPTION) {
+            JOptionPane.showMessageDialog(null, "No file selected.", "Warning", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtIcKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIcKeyTyped
-        char c=evt.getKeyChar();
-        if(!(Character.isDigit(c)||(c==KeyEvent.VK_BACKSPACE)||c==KeyEvent.VK_DELETE)){
-            JOptionPane.showMessageDialog(null, "Invalid input.","Warning", JOptionPane.INFORMATION_MESSAGE);
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACKSPACE) || c == KeyEvent.VK_DELETE)) {
+            JOptionPane.showMessageDialog(null, "Invalid input.", "Warning", JOptionPane.INFORMATION_MESSAGE);
             evt.consume();
         }
     }//GEN-LAST:event_txtIcKeyTyped
 
     private void txtBirthdateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBirthdateKeyTyped
-        char c=evt.getKeyChar();
-        if(!(Character.isDigit(c)||(c==KeyEvent.VK_BACKSPACE)||c==KeyEvent.VK_DELETE)){
-            JOptionPane.showMessageDialog(null, "Invalid input.","Warning", JOptionPane.INFORMATION_MESSAGE);
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACKSPACE) || c == KeyEvent.VK_DELETE)) {
+            JOptionPane.showMessageDialog(null, "Invalid input.", "Warning", JOptionPane.INFORMATION_MESSAGE);
             evt.consume();
         }
     }//GEN-LAST:event_txtBirthdateKeyTyped
 
     private void txtContactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyTyped
-        char c=evt.getKeyChar();
-        if(!(Character.isDigit(c)||(c==KeyEvent.VK_BACKSPACE)||c==KeyEvent.VK_DELETE)){
-            JOptionPane.showMessageDialog(null, "Invalid input.","Warning", JOptionPane.INFORMATION_MESSAGE);
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACKSPACE) || c == KeyEvent.VK_DELETE)) {
+            JOptionPane.showMessageDialog(null, "Invalid input.", "Warning", JOptionPane.INFORMATION_MESSAGE);
             evt.consume();
         }
     }//GEN-LAST:event_txtContactKeyTyped
 
     private void txtHomeTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHomeTelKeyTyped
-        char c=evt.getKeyChar();
-        if(!(Character.isDigit(c)||(c==KeyEvent.VK_BACKSPACE)||c==KeyEvent.VK_DELETE)){
-            JOptionPane.showMessageDialog(null, "Invalid input.","Warning", JOptionPane.INFORMATION_MESSAGE);
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACKSPACE) || c == KeyEvent.VK_DELETE)) {
+            JOptionPane.showMessageDialog(null, "Invalid input.", "Warning", JOptionPane.INFORMATION_MESSAGE);
             evt.consume();
         }
     }//GEN-LAST:event_txtHomeTelKeyTyped
@@ -570,88 +574,75 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         
         int i = Validation();
         
-        if(i == -1)
-        {
-            JOptionPane.showMessageDialog(null, "Mandatory field must no be blank.","Warning", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(i == 0)
-        {
+        if (i == -1) {
+            JOptionPane.showMessageDialog(null, "Mandatory field must no be blank.", "Warning", JOptionPane.INFORMATION_MESSAGE);
+        } else if (i == 0) {
             insertData();
         }
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void rbNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoActionPerformed
-        if(rbNo.isSelected())
-        {
+        if (rbNo.isSelected()) {
             rbYes.setSelected(false);
             cbReason.setEnabled(true);
         }
     }//GEN-LAST:event_rbNoActionPerformed
 
     private void rbYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbYesActionPerformed
-        if(rbYes.isSelected())
-        {
+        if (rbYes.isSelected()) {
             rbNo.setSelected(false);
             cbReason.setEnabled(false);
             cbReason.setSelectedIndex(0);
         }
-        
+
     }//GEN-LAST:event_rbYesActionPerformed
 
     private void txtIcKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIcKeyPressed
-        if(txtIc.getText().length()>=12)
-        {
+        if (txtIc.getText().length() >= 12) {
             txtIc.setText(txtIc.getText().substring(0, 11));
         }
     }//GEN-LAST:event_txtIcKeyPressed
 
     private void txtBirthdateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBirthdateKeyPressed
-        if(txtBirthdate.getText().length()>=8)
-        {
+        if (txtBirthdate.getText().length() >= 8) {
             txtBirthdate.setText(txtBirthdate.getText().substring(0, 7));
         }
     }//GEN-LAST:event_txtBirthdateKeyPressed
 
     private void txtContactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyPressed
-        if(txtContact.getText().length()>= 11)
-        {
+        if (txtContact.getText().length() >= 11) {
             txtContact.setText(txtContact.getText().substring(0, 10));
-        }  
+        }
     }//GEN-LAST:event_txtContactKeyPressed
 
     private void txtHomeTelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHomeTelKeyPressed
-        if(txtHomeTel.getText().length()>=9)
-        {
+        if (txtHomeTel.getText().length() >= 9) {
             txtHomeTel.setText(txtHomeTel.getText().substring(0, 8));
-        }  
+        }
     }//GEN-LAST:event_txtHomeTelKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
-        if(txtName.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(null, "Please enter name before search.","Warning", JOptionPane.INFORMATION_MESSAGE);
+        if (txtName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter name before search.", "Warning", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            SelectData();  
+            jButton6.setEnabled(txtStatus.getText().equals("Delivery"));   
         }
-        else{
-            SelectData();
-        }
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void BtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUpdateActionPerformed
         
-        if(txtId.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(null, "Don't play play","Warning", JOptionPane.INFORMATION_MESSAGE);
-        
-        }
-        else
-        {
+        if (txtId.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Don't play play", "Warning", JOptionPane.INFORMATION_MESSAGE);
+            
+        } else {
             updateData();
             clearData();
         }
@@ -665,16 +656,21 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBirthdateActionPerformed
 
-    private void txtContact1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContact1KeyPressed
+    private void txtStatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStatusKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtContact1KeyPressed
+    }//GEN-LAST:event_txtStatusKeyPressed
 
-    private void txtContact1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContact1KeyTyped
+    private void txtStatusKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStatusKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtContact1KeyTyped
+    }//GEN-LAST:event_txtStatusKeyTyped
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        PendingDeliveries pd=new PendingDeliveries(txtName.getText());
+        pd.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
     
-    public void clearData()
-    {
+    public void clearData() {
         txtId.setText("");
         txtName.setText("");
         txtIc.setText("");
@@ -691,60 +687,43 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         rbNo.setSelected(false);
     }
     
-    public int Validation()
-    {
+    public int Validation() {
         int re = 0;
-        if(txtName.getText().isEmpty())
-        {
+        if (txtName.getText().isEmpty()) {
             re = -1;
-        }
-        else if(txtIc.getText().isEmpty())
-        {
+        } else if (txtIc.getText().isEmpty()) {
             re = -1;
-        }
-        else if(txtBirthdate.getText().isEmpty())
-        {
+        } else if (txtBirthdate.getText().isEmpty()) {
             re = -1;
-        }
-        else if(txtContact.getText().isEmpty())
-        {
+        } else if (txtContact.getText().isEmpty()) {
             re = -1;
-        }
-        else if(txtHomeTel.getText().isEmpty())
-        {
+        } else if (txtHomeTel.getText().isEmpty()) {
             re = -1;
-        }
-        else if(txtAddress.getText().isEmpty())
-        {
+        } else if (txtAddress.getText().isEmpty()) {
             re = -1;
-        }
-        else if(txtCityy.getText().isEmpty())
-        {
+        } else if (txtCityy.getText().isEmpty()) {
             re = -1;
         }
         
         return re;
     }
     
-    public void insertData(){
+    public void insertData() {
         
-        if(rbNo.isSelected())
-        {
+        if (rbNo.isSelected()) {
             Dstatus = 1;
-        }
-        else
-        {
+        } else {
             Dstatus = 0;
         }
-  
-        try{            
-            String host = "jdbc:derby://localhost:1527/collegedb";
-            String user = "collegedb";
-            String password = "collegedb";
         
-            conn = DriverManager.getConnection(host,user,password);
-            String sqlStr = "Insert into DELIVERYMAN (Name,IC,GENDER,BIRTHDATE,CONTACTNO,HOMETEL,ADDRESS,STATE,CITY,STATUS,REASON,OFFDAY) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-                        
+        try {
+            String host = "jdbc:derby://localhost:1527/collegedb";
+            String user = "nbuser";
+            String password = "nbuser";
+            
+            conn = DriverManager.getConnection(host, user, password);
+            String sqlStr = "Insert into DELIVERYMAN (Name,IC,GENDER,BIRTHDATE,CONTACTNO,HOMETEL,ADDRESS,STATE,CITY,STATUS,REASON,OFFDAY,DELIVERYSTATUS) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            
             stmt = conn.prepareStatement(sqlStr);
             stmt.setString(1, txtName.getText());
             stmt.setString(2, txtIc.getText());
@@ -758,30 +737,29 @@ public class AddDeliveryMan extends javax.swing.JFrame {
             stmt.setInt(10, Dstatus);
             stmt.setString(11, String.valueOf(cbReason.getSelectedItem()));
             stmt.setString(12, String.valueOf(cbOffday.getSelectedItem()));
+            stmt.setString(13, txtStatus.getText());
             //stmt.setString(13, Picturebox.getText());
-            
+
             stmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Insert Successful." );
+            JOptionPane.showMessageDialog(null, "Insert Successful.");
             clearData();
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Fail Insert. " + e.getMessage(),"Warning", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Fail Insert. " + e.getMessage(), "Warning", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
-    public void SelectData(){
-        try{
+    public void SelectData() {
+        try {
             String host = "jdbc:derby://localhost:1527/collegedb";
-            String user = "collegedb";
-            String password = "collegedb";
+            String user = "nbuser";
+            String password = "nbuser";
             
             conn = DriverManager.getConnection(host, user, password);
             stmt = conn.prepareStatement("SELECT * FROM DELIVERYMAN WHERE NAME = ?");
-            stmt.setString(1, txtName.getText()); 
+            stmt.setString(1, txtName.getText());
             
             rs = stmt.executeQuery();
-            if(rs.next())
-            {
+            if (rs.next()) {
                 txtId.setText(rs.getString(1));
                 txtName.setText(rs.getString(2));
                 txtIc.setText(rs.getString(3));
@@ -793,65 +771,55 @@ public class AddDeliveryMan extends javax.swing.JFrame {
                 cbState.setSelectedItem(rs.getString(9));
                 txtCityy.setText(rs.getString(10));
                 int Status = rs.getInt(11);
-                if(Status == 0)
-                {
+                if (Status == 0) {
                     rbYes.setSelected(true);
                     rbNo.setSelected(false);
-                }
-                else
-                {
+                } else {
                     rbNo.setSelected(true);
                     rbYes.setSelected(false);
                 }
                 cbReason.setSelectedItem(rs.getString(12));
                 cbOffday.setSelectedItem(rs.getString(13));
+                txtStatus.setText(rs.getString(14));
             }
             
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null, "Failed. " + e.getMessage(),"Warning", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Failed. " + e.getMessage(), "Warning", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
-    public void updateData(){
+    public void updateData() {
         
-        if(rbNo.isSelected())
-        {
+        if (rbNo.isSelected()) {
             Dstatus = 1;
-        }
-        else
-        {
+        } else {
             Dstatus = 0;
         }
-  
-        try{            
+        
+        try {
             String host = "jdbc:derby://localhost:1527/collegedb";
             String user = "collegedb";
             String password = "collegedb";
-        
-            conn = DriverManager.getConnection(host,user,password);
-            String sqlStr = "Update DELIVERYMAN set Name='"+txtName.getText()+"',IC='"+txtIc.getText()+"',GENDER='"+cbGender.getSelectedItem()+"'"
-                    + ",BIRTHDATE='"+ txtBirthdate.getText() +"', CONTACTNO='"+txtContact.getText()+"', HOMETEL='"+txtHomeTel.getText()+"'"
-                    + ",Address='"+txtAddress.getText()+"', STATE='"+ cbState.getSelectedItem()+"', CITY='"+txtCityy.getText()+"'"
-                    + ",STATUS=?, REASON='"+cbReason.getSelectedItem()+"', OFFDAY='"+cbOffday.getSelectedItem()+"' where DELIVERYMANID=?";
-                        
+            
+            conn = DriverManager.getConnection(host, user, password);
+            String sqlStr = "Update DELIVERYMAN set Name='" + txtName.getText() + "',IC='" + txtIc.getText() + "',GENDER='" + cbGender.getSelectedItem() + "'"
+                    + ",BIRTHDATE='" + txtBirthdate.getText() + "', CONTACTNO='" + txtContact.getText() + "', HOMETEL='" + txtHomeTel.getText() + "'"
+                    + ",Address='" + txtAddress.getText() + "', STATE='" + cbState.getSelectedItem() + "', CITY='" + txtCityy.getText() + "'"
+                    + ",STATUS=?, REASON='" + cbReason.getSelectedItem() + "', OFFDAY='" + cbOffday.getSelectedItem() + "' where DELIVERYMANID=?";
+            
             stmt = conn.prepareStatement(sqlStr);
-            stmt.setInt(1, Dstatus); 
-            stmt.setString(2, txtId.getText()); 
+            stmt.setInt(1, Dstatus);
+            stmt.setString(2, txtId.getText());
             stmt.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Updated." );
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Fail Insert. " + e.getMessage(),"Warning", JOptionPane.INFORMATION_MESSAGE);
+            
+            JOptionPane.showMessageDialog(null, "Updated.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Fail Insert. " + e.getMessage(), "Warning", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
-    public void ImagePath()
-    {
+    
+    public void ImagePath() {
         
-
     }
     
     public static void main(String args[]) {
@@ -882,7 +850,7 @@ public class AddDeliveryMan extends javax.swing.JFrame {
             public void run() {
                 new AddDeliveryMan().setVisible(true);
             }
-
+            
         });
     }
 
@@ -927,11 +895,11 @@ public class AddDeliveryMan extends javax.swing.JFrame {
     private javax.swing.JTextField txtBirthdate;
     private javax.swing.JTextField txtCityy;
     private javax.swing.JTextField txtContact;
-    private javax.swing.JTextField txtContact1;
     private javax.swing.JTextField txtHomeTel;
     private javax.swing.JTextField txtIc;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtStatus;
     // End of variables declaration//GEN-END:variables
 
 }
