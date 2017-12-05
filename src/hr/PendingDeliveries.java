@@ -190,7 +190,7 @@ public class PendingDeliveries extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbPending);
 
-        lbl.setText("Last update tme:");
+        lbl.setText("Last update time:");
 
         jPanel2.setBackground(javax.swing.UIManager.getDefaults().getColor("InternalFrame.inactiveTitleGradient"));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -215,10 +215,10 @@ public class PendingDeliveries extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(lblDeliveryMan)
                 .addGap(18, 18, 18)
-                .addComponent(cbDeliveryMan, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addComponent(cbDeliveryMan, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(btnFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,8 +269,8 @@ public class PendingDeliveries extends javax.swing.JFrame {
                     .addComponent(lblD)
                     .addComponent(lblDate))
                 .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         lblD.getAccessibleContext().setAccessibleName("");

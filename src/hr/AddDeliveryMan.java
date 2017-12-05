@@ -51,9 +51,7 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         txtId = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
         txtIc = new javax.swing.JTextField();
-        lblPicture = new javax.swing.JLabel();
         cbGender = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         BtnUpdate = new javax.swing.JButton();
@@ -71,8 +69,6 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         lblCity = new javax.swing.JLabel();
         txtCityy = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        Picturebox = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtBirthdate = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -85,7 +81,6 @@ public class AddDeliveryMan extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Delivery Man");
-        setPreferredSize(new java.awt.Dimension(1000, 730));
 
         BtnSearchName.setBackground(new java.awt.Color(255, 255, 255));
         BtnSearchName.setPreferredSize(new java.awt.Dimension(1000, 730));
@@ -135,18 +130,7 @@ public class AddDeliveryMan extends javax.swing.JFrame {
             }
         });
 
-        lblPicture.setText("Picture :");
-
         cbGender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female" }));
-
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Search");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Add");
@@ -220,7 +204,7 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblContactNo, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -229,17 +213,15 @@ public class AddDeliveryMan extends javax.swing.JFrame {
                     .addComponent(lblAddress, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblCity, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbState, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtHomeTel)
-                    .addComponent(txtContact)
-                    .addComponent(txtAddress)
-                    .addComponent(txtCityy, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cbState, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtHomeTel)
+                        .addComponent(txtContact)
+                        .addComponent(txtAddress)
+                        .addComponent(txtCityy, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,15 +250,6 @@ public class AddDeliveryMan extends javax.swing.JFrame {
                     .addComponent(lblCity))
                 .addGap(38, 38, 38))
         );
-
-        Picturebox.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jButton5.setText("Upload");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Birth Date :");
 
@@ -309,7 +282,7 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         jPanel2.setBackground(java.awt.Color.white);
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Fax", 0, 15)); // NOI18N
         jLabel4.setText("Delivery Info.");
 
         lblContactNo1.setText("Status:");
@@ -373,66 +346,52 @@ public class AddDeliveryMan extends javax.swing.JFrame {
                 .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTitle)
                     .addGroup(BtnSearchNameLayout.createSequentialGroup()
-                        .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(BtnSearchNameLayout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BtnUpdate)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4))
+                    .addGroup(BtnSearchNameLayout.createSequentialGroup()
+                        .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BtnSearchNameLayout.createSequentialGroup()
                                 .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblID)
-                                        .addComponent(lblName, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblIC, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addGroup(BtnSearchNameLayout.createSequentialGroup()
-                                        .addGap(38, 38, 38)
-                                        .addComponent(lblPicture)))
+                                    .addComponent(lblID)
+                                    .addComponent(lblName, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblIC, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)
-                                .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(BtnSearchNameLayout.createSequentialGroup()
-                                        .addComponent(Picturebox, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jButton5))
-                                    .addGroup(BtnSearchNameLayout.createSequentialGroup()
-                                        .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(cbOffday, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(txtId)
-                                                .addComponent(txtName)
-                                                .addComponent(txtIc)
-                                                .addComponent(txtBirthdate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(cbGender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(BtnSearchNameLayout.createSequentialGroup()
+                                .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cbOffday, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtId)
+                                        .addComponent(txtName)
+                                        .addComponent(txtIc)
+                                        .addComponent(txtBirthdate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cbGender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(72, 72, 72))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BtnSearchNameLayout.createSequentialGroup()
                                 .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jcGender)
                                     .addComponent(lblOffday)
                                     .addComponent(jLabel2))
-                                .addGap(284, 284, 284)))
-                        .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(327, 327, 327))
                             .addGroup(BtnSearchNameLayout.createSequentialGroup()
-                                .addGap(95, 95, 95)
+                                .addGap(30, 30, 30)
                                 .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblStatus)
                                     .addComponent(lblReason))
-                                .addGap(18, 18, 18)
+                                .addGap(28, 28, 28)
                                 .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbReason, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(BtnSearchNameLayout.createSequentialGroup()
                                         .addComponent(rbYes)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(rbNo))))
-                            .addGroup(BtnSearchNameLayout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addGroup(BtnSearchNameLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtnUpdate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)))
+                                        .addGap(22, 22, 22)
+                                        .addComponent(rbNo))
+                                    .addComponent(cbReason, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 183, Short.MAX_VALUE))
         );
         BtnSearchNameLayout.setVerticalGroup(
@@ -444,11 +403,10 @@ public class AddDeliveryMan extends javax.swing.JFrame {
                 .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
-                .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(BtnSearchNameLayout.createSequentialGroup()
+                .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BtnSearchNameLayout.createSequentialGroup()
                         .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblID)
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -476,26 +434,23 @@ public class AddDeliveryMan extends javax.swing.JFrame {
                         .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblOffday)
                             .addComponent(cbOffday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Picturebox, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPicture)
-                            .addComponent(jButton5))
-                        .addGap(188, 188, 188))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BtnSearchNameLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(27, 27, 27)
                         .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblStatus)
                             .addComponent(rbYes)
                             .addComponent(rbNo))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(BtnSearchNameLayout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)))
+                .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BtnSearchNameLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
                         .addGroup(BtnSearchNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblReason)
-                            .addComponent(cbReason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                            .addComponent(cbReason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(201, 201, 201))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -506,37 +461,13 @@ public class AddDeliveryMan extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BtnSearchName, javax.swing.GroupLayout.DEFAULT_SIZE, 746, Short.MAX_VALUE)
+            .addComponent(BtnSearchName, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public ImageIcon ResizeImage(String ImagePath) {
-        ImageIcon MyImage = new ImageIcon(ImagePath);
-        Image img = MyImage.getImage();
-        Image newImg = img.getScaledInstance(Picturebox.getWidth(), Picturebox.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon image = new ImageIcon(newImg);
-        return image;
-    }
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        JFileChooser file = new JFileChooser();
-        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images", ".jpg", ".gif", ".PNG");
-        file.addChoosableFileFilter(filter);
-        int result = file.showSaveDialog(null);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = file.getSelectedFile();
-            String path = selectedFile.getAbsolutePath();
-            Picturebox.setIcon(ResizeImage(path));
-            
-        } else if (result == JFileChooser.CANCEL_OPTION) {
-            JOptionPane.showMessageDialog(null, "No file selected.", "Warning", JOptionPane.INFORMATION_MESSAGE);
-        }
-
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtIcKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIcKeyTyped
         char c = evt.getKeyChar();
@@ -621,10 +552,6 @@ public class AddDeliveryMan extends javax.swing.JFrame {
             txtHomeTel.setText(txtHomeTel.getText().substring(0, 8));
         }
     }//GEN-LAST:event_txtHomeTelKeyPressed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
@@ -817,11 +744,7 @@ public class AddDeliveryMan extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Fail Insert. " + e.getMessage(), "Warning", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
-    public void ImagePath() {
-        
-    }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -857,16 +780,13 @@ public class AddDeliveryMan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BtnSearchName;
     private javax.swing.JButton BtnUpdate;
-    private javax.swing.JLabel Picturebox;
     private javax.swing.JComboBox cbGender;
     private javax.swing.JComboBox cbOffday;
     private javax.swing.JComboBox cbReason;
     private javax.swing.JComboBox cbState;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -883,7 +803,6 @@ public class AddDeliveryMan extends javax.swing.JFrame {
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblOffday;
-    private javax.swing.JLabel lblPicture;
     private javax.swing.JLabel lblReason;
     private javax.swing.JLabel lblState;
     private javax.swing.JLabel lblStatus;
