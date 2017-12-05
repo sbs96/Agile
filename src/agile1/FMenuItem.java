@@ -216,12 +216,10 @@ public class FMenuItem extends javax.swing.JFrame {
         jlPrise4 = new javax.swing.JLabel();
         jbGoBack = new javax.swing.JButton();
         jbOrder = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -314,9 +312,6 @@ public class FMenuItem extends javax.swing.JFrame {
         });
         jPanel2.add(jbOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, -1, -1));
 
-        jLabel5.setText("jLabel5");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
-
         jLabel6.setText("RM");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 30, 30));
 
@@ -330,9 +325,6 @@ public class FMenuItem extends javax.swing.JFrame {
         jLabel9.setText("RM");
         jLabel9.setToolTipText("");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 30, 30));
-
-        jLabel10.setText("jLabel10");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -367,7 +359,7 @@ public class FMenuItem extends javax.swing.JFrame {
         // TODO add your handling code here:
         String item = jLabel1.getText();
         qua1 ++;
-        jLabel5.setText(String.valueOf(qua1));
+//        jLabel5.setText(String.valueOf(qua1));
 
         double price = Double.parseDouble(jlPrise1.getText());
         order = new Order(item,qua1,price);
@@ -378,7 +370,7 @@ public class FMenuItem extends javax.swing.JFrame {
         // TODO add your handling code here:
         String item = jLabel2.getText();
         qua2++;
-        jLabel10.setText(String.valueOf(qua2));
+//        jLabel10.setText(String.valueOf(qua2));
 
         double price = Double.parseDouble(jlPrise2.getText());
         order = new Order(item,qua2,price);
@@ -457,11 +449,9 @@ public class FMenuItem extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
