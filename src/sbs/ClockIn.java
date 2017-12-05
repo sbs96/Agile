@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  *
  * @author PC2
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class ClockIn extends javax.swing.JFrame {
 
     Connection con;
     PreparedStatement pstmt;
@@ -29,7 +29,7 @@ public class NewJFrame extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    public ClockIn() {
         initComponents();
         try {
             String host = "jdbc:derby://localhost:1527/collegedb";
@@ -37,7 +37,7 @@ public class NewJFrame extends javax.swing.JFrame {
             String password = "nbuser";
             con = DriverManager.getConnection(host, username, password);
         } catch (SQLException ex) {
-            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClockIn.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -57,6 +57,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Clock In");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +65,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton2.setText("Clock Out");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +100,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,11 +121,14 @@ public class NewJFrame extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             GregorianCalendar cal = new GregorianCalendar();
+            //check if there exists a record which clockout is null
+            //clock out is null means the employee has not clock out yet
             pstmt = con.prepareStatement("select * from ClockInOut where empId=? and date=? and clockOut is null");
             pstmt.setInt(1, 101);
             pstmt.setString(2, cal.get(GregorianCalendar.MONTH) + 1 + "/" + cal.get(GregorianCalendar.DATE) + "/" + cal.get(GregorianCalendar.YEAR));
             rs = pstmt.executeQuery();
             if (rs.next()) {
+                //if the record exists
                 JOptionPane.showMessageDialog(null, "You need to clock out before you can clock in.");
             } else {
                 pstmt = con.prepareStatement("insert into ClockInOut(empId,date,clockIn) values(?,?,?)");
@@ -134,7 +139,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "You have successfully clock in.");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClockIn.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -155,7 +160,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "You need to clock in before you can clock out.");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClockIn.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -176,20 +181,21 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClockIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClockIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClockIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClockIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new ClockIn().setVisible(true);
             }
         });
     }
