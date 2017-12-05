@@ -28,8 +28,7 @@ public class PendingDeliveries extends javax.swing.JFrame {
     }
 
     public PendingDeliveries(String name) {
-        this();
-        clearTable();
+        initComponents();
         cbDeliveryMan.setSelectedItem(name);
         show_Delivery();
     }
