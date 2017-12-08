@@ -19,7 +19,6 @@ public class TrackOrder extends javax.swing.JFrame {
      */
     public TrackOrder() {
         initComponents();
-
     }
 
     /**
@@ -198,7 +197,7 @@ public class TrackOrder extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (jTextField1.getText().equals("ABC1001")) {
+        if (jTextField1.getText().equalsIgnoreCase("ABC1001")) {
             GregorianCalendar cal = new GregorianCalendar();
             int day = cal.get(GregorianCalendar.DATE);
             int month = cal.get(GregorianCalendar.MONTH) + 1;
@@ -207,7 +206,7 @@ public class TrackOrder extends javax.swing.JFrame {
             int minute = cal.get(GregorianCalendar.MINUTE);
 
             int min = (int) (Math.random() * 11 + 20);
-            jLabel2.setText("Your order will arrive in " + min + " minute(s)");
+            jLabel2.setText("<html>Your order will arrive in <b>" + min + "</b> minute(s)</html>");
             jLabel3.setText(day + "/" + month + "/" + year + " " + hour + ":" + minute);
             jLabel4.setText("Al-Fariz");
             jLabel10.setText("RM 20.00");
