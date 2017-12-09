@@ -52,11 +52,17 @@ public class updateMenu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Update Item For Your Menu");
 
-        jLabel2.setText("Item Name");
+        jLabel2.setText("Food Name");
 
-        jLabel3.setText("Item Description");
+        jLabel3.setText("Food Description");
 
         jLabel4.setText("Item Price (RM)");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("confirm");
         jButton1.setToolTipText("");
@@ -189,6 +195,10 @@ public class updateMenu extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
