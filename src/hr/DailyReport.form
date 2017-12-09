@@ -102,7 +102,7 @@
             <Component class="javax.swing.JTable" name="jTable1">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="6" rowCount="8">
+                  <Table columnCount="6" rowCount="9">
                     <Column editable="true" title="No." type="java.lang.Object">
                       <Data value="1"/>
                       <Data value="2"/>
@@ -112,6 +112,7 @@
                       <Data value="6"/>
                       <Data value="7"/>
                       <Data value="8"/>
+                      <Data value="9"/>
                     </Column>
                     <Column editable="true" title="Delivery Man" type="java.lang.Object">
                       <Data value="evon"/>
@@ -122,6 +123,7 @@
                       <Data value="Jie Yi"/>
                       <Data value="sbs"/>
                       <Data value="evon"/>
+                      <Data value="sbs"/>
                     </Column>
                     <Column editable="true" title="Customer" type="java.lang.Object">
                       <Data value="Chris"/>
@@ -132,6 +134,7 @@
                       <Data value="Tom"/>
                       <Data value="Evangeline"/>
                       <Data value="xiao you"/>
+                      <Data value="Jack"/>
                     </Column>
                     <Column editable="true" title="Restaurant" type="java.lang.Object">
                       <Data value="Sushi King"/>
@@ -142,6 +145,7 @@
                       <Data value="Masimo"/>
                       <Data value="Carry pop"/>
                       <Data value="hui liu shan"/>
+                      <Data value="llao llao"/>
                     </Column>
                     <Column editable="true" title="Distance (KM)" type="java.lang.Object">
                       <Data value="6"/>
@@ -152,6 +156,7 @@
                       <Data value="2"/>
                       <Data value="10"/>
                       <Data value="3"/>
+                      <Data value="7"/>
                     </Column>
                     <Column editable="true" title="Time" type="java.lang.Object">
                       <Data value="08:22:21"/>
@@ -162,6 +167,7 @@
                       <Data value="12:12:12"/>
                       <Data value="13:14:45"/>
                       <Data value="14:23:12"/>
+                      <Data value="16:22:33"/>
                     </Column>
                   </Table>
                 </Property>

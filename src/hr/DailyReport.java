@@ -63,7 +63,8 @@ public class DailyReport extends javax.swing.JFrame {
                 {"5", "Fong Er", "Kai Er", "Ruyi", "8", "11:57:34"},
                 {"6", "Jie Yi", "Tom", "Masimo", "2", "12:12:12"},
                 {"7", "sbs", "Evangeline", "Carry pop", "10", "13:14:45"},
-                {"8", "evon", "xiao you", "hui liu shan", "3", "14:23:12"}
+                {"8", "evon", "xiao you", "hui liu shan", "3", "14:23:12"},
+                {"9", "sbs", "Jack", "llao llao", "7", "16:22:33"}
             },
             new String [] {
                 "No.", "Delivery Man", "Customer", "Restaurant", "Distance (KM)", "Time"
