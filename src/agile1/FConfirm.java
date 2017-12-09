@@ -19,21 +19,27 @@ public class FConfirm extends javax.swing.JFrame {
      */
     public FConfirm() {
         initComponents();
+        clearTable();
+        show_Order();
     }
     
     public FConfirm(ArrayList<Order> orderList) {
+        initComponents();
+        clearTable();
         this.orderList = orderList;
+        show_Order();
     }
     
     public void show_Order()
     {
+        //ArrayList<Order> orderList = new ArrayList();
         DefaultTableModel model = (DefaultTableModel)tbOrderConfirm.getModel();
-        Object[] row = new Object[4];
+        Object[] row = new Object[3];
         for(int i=0;i<orderList.size();i++){
             row[0] = orderList.get(i).getItemName();
             row[1] = orderList.get(i).getQuantity();
             row[2] = orderList.get(i).getPrice();
-            row[3] = orderList.get(i).getRemark();
+            //row[3] = orderList.get(i).getRemark();
             model.addRow(row);
         }
     
@@ -110,6 +116,7 @@ public class FConfirm extends javax.swing.JFrame {
         jlResName.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jlResName.setText("jLabel1");
 
+        tbOrderConfirm.setAutoCreateRowSorter(true);
         tbOrderConfirm.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -125,7 +132,7 @@ public class FConfirm extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, true
+                false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -136,6 +143,7 @@ public class FConfirm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbOrderConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tbOrderConfirm);
 
         jbMenu.setText("Go Back Menu");
@@ -201,6 +209,11 @@ public class FConfirm extends javax.swing.JFrame {
     private void jbMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMenuActionPerformed
         // TODO add your handling code here:
         FMenuItem menuFrame = new FMenuItem();
+        //menuFrame.setVisible(true);
+        orderList.clear();
+        clearTable();
+        menuFrame.setRes(jlResName.getText());
+        menuFrame.getMenu(jlResName.getText());
         menuFrame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jbMenuActionPerformed
