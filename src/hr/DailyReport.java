@@ -25,12 +25,10 @@ public class DailyReport extends javax.swing.JFrame {
         public void Time() {
         Calendar cal = Calendar.getInstance();
         cal.getTime();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat date = new SimpleDateFormat("dd MMMM yyyy");
         String Date = date.format(cal.getTime());
-        String Time = sdf.format(cal.getTime());
-        lblTime.setText(Time);
-        lblTime.setVisible(false);
+        lblDate.setText(Date);
+
     }
 
     /**
@@ -46,22 +44,30 @@ public class DailyReport extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        lblTime = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Daily Report");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblTitle.setFont(new java.awt.Font("Franklin Gothic Book", 0, 24)); // NOI18N
-        lblTitle.setText("Daily Report");
+        lblTitle.setFont(new java.awt.Font("Franklin Gothic Book", 0, 36)); // NOI18N
+        lblTitle.setText("Fastest Deliveryman Daily Report");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"1", "evon", "Chris", "Sushi King", "6", "08:22:21"},
+                {"2", "sbs", "cheng", "McD", "3", "09:12:23"},
+                {"3", "Wong CK", "KK", "Home Town Food", "4", "10:34:43"},
+                {"4", "Yun Mi", "Hong hong", "Alisan", "6", "11:12:34"},
+                {"5", "Fong Er", "Kai Er", "Ruyi", "8", "11:57:34"},
+                {"6", "Jie Yi", "Tom", "Masimo", "2", "12:12:12"},
+                {"7", "sbs", "Evangeline", "Carry pop", "10", "13:14:45"},
+                {"8", "evon", "xiao you", "hui liu shan", "3", "14:23:12"},
+                {"9", "sbs", "Jack", "llao llao", "7", "16:22:33"}
             },
             new String [] {
-                "No.", "Delivery Man", "Customer", "Restaurant", "Distance", "Time"
+                "No.", "Delivery Man", "Customer", "Restaurant", "Distance (KM)", "Time"
             }
         ));
         jTable1.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -71,33 +77,36 @@ public class DailyReport extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        lblDate.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        lblDate.setText("Date");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTitle)
-                        .addGap(56, 56, 56)
-                        .addComponent(lblTime))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 792, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(104, Short.MAX_VALUE))
+                        .addGap(132, 132, 132)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 792, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(270, 270, 270)
+                        .addComponent(lblTitle))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(450, 450, 450)
+                        .addComponent(lblDate)))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(lblTitle))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTime)))
-                .addGap(34, 34, 34)
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addComponent(lblTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDate)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addGap(55, 55, 55))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -162,7 +171,7 @@ public class DailyReport extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lblTime;
+    private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }
