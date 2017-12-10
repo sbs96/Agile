@@ -11,6 +11,7 @@ package agile1;
  */
 public class Order {
     int itemID;
+    int orderID;
     String itemName;
     int quantity;
     double price;
@@ -35,6 +36,14 @@ public class Order {
         this.itemName = itemName;
         this.quantity = quantity;
         this.price = price;
+    }
+
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
     }
     
     public int getItemID() {

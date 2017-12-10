@@ -51,7 +51,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jlTitle" alignment="0" pref="470" max="32767" attributes="0"/>
+              <Component id="jlTitle" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -141,6 +141,9 @@
                   <Color id="Default Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbOrderConfirmMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -156,6 +159,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Confirm "/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbConfirmActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblOrderID">
           <Properties>

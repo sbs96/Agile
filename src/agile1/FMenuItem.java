@@ -27,7 +27,7 @@ public class FMenuItem extends javax.swing.JFrame {
     public FMenuItem() {
         initComponents();   
     }
-    
+    String re = " ";
     ArrayList<Order> orderL = new ArrayList();
     Order order1;
     Order order2;
@@ -56,7 +56,6 @@ public class FMenuItem extends javax.swing.JFrame {
     {
         //orderConfirmF.setRes(res);
         int resID=0;
-        
         try{
             
             String host = "jdbc:derby://localhost:1527/collegedb";
@@ -72,8 +71,15 @@ public class FMenuItem extends javax.swing.JFrame {
                 resID=rs.getInt(1);
                 //jlResName.setText(String.valueOf(resID));
             }
+        }
+        catch(SQLException ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+            //Logger.getLongger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         String resN = jlResName.getText();
-        if(resID==111||resN=="Homemade Chinese Restaurant")
+        if(resID==111||res=="Homemade Chinese Restaurant ")
         {
             jLabel1.setText("Spicy Dry Noodle");
             jlPrise1.setText("10.00");
@@ -168,12 +174,12 @@ public class FMenuItem extends javax.swing.JFrame {
             jlPrise4.setText(" 4.00");
         }
        
-        }
-        catch(SQLException ex)
-        {
-            JOptionPane.showMessageDialog(null, ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
-            //Logger.getLongger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        }
+//        catch(SQLException ex)
+//        {
+//            JOptionPane.showMessageDialog(null, ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+//            //Logger.getLongger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }
         
@@ -393,7 +399,7 @@ public class FMenuItem extends javax.swing.JFrame {
 
         double price = Double.parseDouble(jlPrise1.getText());
         price = price * qua1; 
-        order1 = new Order(item,qua1,price);
+        order1 = new Order(item,qua1,price,re);
         //orderL.add(order);
     }//GEN-LAST:event_jbtAdd1ActionPerformed
 
@@ -405,7 +411,7 @@ public class FMenuItem extends javax.swing.JFrame {
 
         double price = Double.parseDouble(jlPrise2.getText());
         price = price * qua2;
-        order2 = new Order(item,qua2,price);
+        order2 = new Order(item,qua2,price,re);
 //        orderL.add(order);
     }//GEN-LAST:event_jbtAdd2ActionPerformed
 
@@ -418,7 +424,7 @@ public class FMenuItem extends javax.swing.JFrame {
 
         double price = Double.parseDouble(jlPrise3.getText());
         price = price * qua3;
-        order3 = new Order(item,qua3,price);
+        order3 = new Order(item,qua3,price,re);
 //        orderL.add(order);
     }//GEN-LAST:event_jbtAdd3ActionPerformed
 
@@ -430,7 +436,7 @@ public class FMenuItem extends javax.swing.JFrame {
 
         double price = Double.parseDouble(jlPrise4.getText());
         price = price * qua4;        
-        order4 = new Order(item,qua4,price);
+        order4 = new Order(item,qua4,price,re);
 //        orderL.add(order);
     }//GEN-LAST:event_jbtAdd4ActionPerformed
 
@@ -466,7 +472,7 @@ public class FMenuItem extends javax.swing.JFrame {
 
             double price = Double.parseDouble(jlPrise1.getText());
             price = price * qua1;
-            order1 = new Order(item,qua1,price);
+            order1 = new Order(item,qua1,price,re);
 //            orderL.add(order);
         }
     }//GEN-LAST:event_jbtDe1ActionPerformed
@@ -485,7 +491,7 @@ public class FMenuItem extends javax.swing.JFrame {
 
             double price = Double.parseDouble(jlPrise2.getText());
             price = price * qua2;
-            order2 = new Order(item,qua2,price);
+            order2 = new Order(item,qua2,price,re);
 //            orderL.add(order);
         }
     }//GEN-LAST:event_jbtDe2ActionPerformed
@@ -503,7 +509,7 @@ public class FMenuItem extends javax.swing.JFrame {
 
             double price = Double.parseDouble(jlPrise3.getText());
             price = price * qua3;
-            order3 = new Order(item,qua3,price);
+            order3 = new Order(item,qua3,price,re);
 //            orderL.add(order);
         }
     }//GEN-LAST:event_jbtDe3ActionPerformed
@@ -521,7 +527,7 @@ public class FMenuItem extends javax.swing.JFrame {
 
             double price = Double.parseDouble(jlPrise4.getText());
             price = price * qua4;
-            order4 = new Order(item,qua4,price);
+            order4 = new Order(item,qua4,price,re);
 //            orderL.add(order);
         }
     }//GEN-LAST:event_jbtDe4ActionPerformed

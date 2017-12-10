@@ -6,6 +6,7 @@
 package agile1;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,23 +27,53 @@ public class FConfirm extends javax.swing.JFrame {
     public FConfirm(ArrayList<Order> orderList) {
         initComponents();
         clearTable();
+        lblOrderID.setText(String.valueOf(generateOrderID()));
         this.orderList = orderList;
         show_Order();
+    }
+    public int generateOrderID()
+    {
+        int orderID=1001;
+        return orderID;
     }
     
     public void show_Order()
     {
-        //ArrayList<Order> orderList = new ArrayList();
         DefaultTableModel model = (DefaultTableModel)tbOrderConfirm.getModel();
-        Object[] row = new Object[3];
+        Object[] row = new Object[5];
         for(int i=0;i<orderList.size();i++){
             row[0] = orderList.get(i).getItemName();
             row[1] = orderList.get(i).getQuantity();
             row[2] = orderList.get(i).getPrice();
-            //row[3] = orderList.get(i).getRemark();
+            row[3] = orderList.get(i).getRemark();
             model.addRow(row);
         }
+    }
     
+    public ArrayList<Order> get_Order()
+    {
+        Order order;
+        String item;
+        String re = "";
+        int qua;
+        double price;
+        
+        ArrayList<Order> orderList = new ArrayList();
+        int selectedRow = tbOrderConfirm.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel)tbOrderConfirm.getModel();
+        int rowCount = model.getRowCount();
+        //Object[] row = new Object[4];
+        for(int i=0;i<rowCount;i++)
+        {
+            item = model.getValueAt(selectedRow, 0).toString();
+            qua = (Integer)model.getValueAt(selectedRow, 1);
+            price = (double)model.getValueAt(selectedRow, 2);
+            re = model.getValueAt(selectedRow, 3).toString();
+            
+            order = new Order(Integer.parseInt(lblOrderID.getText()),item, qua, price, re);
+            orderList.add(order);
+        }
+        return orderList;    
     }
     
     public void clearTable()
@@ -104,7 +135,7 @@ public class FConfirm extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+            .addComponent(jlTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,6 +175,11 @@ public class FConfirm extends javax.swing.JFrame {
             }
         });
         tbOrderConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tbOrderConfirm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbOrderConfirmMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbOrderConfirm);
 
         jbMenu.setText("Go Back Menu");
@@ -154,6 +190,11 @@ public class FConfirm extends javax.swing.JFrame {
         });
 
         jbConfirm.setText("Confirm ");
+        jbConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConfirmActionPerformed(evt);
+            }
+        });
 
         lblOrderID.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblOrderID.setText("jLabel1");
@@ -208,15 +249,30 @@ public class FConfirm extends javax.swing.JFrame {
 
     private void jbMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMenuActionPerformed
         // TODO add your handling code here:
+        String res = jlResName.getText();
         FMenuItem menuFrame = new FMenuItem();
+        FRestaurant resFrame = new FRestaurant();
         //menuFrame.setVisible(true);
-        orderList.clear();
-        clearTable();
-        menuFrame.setRes(jlResName.getText());
-        menuFrame.getMenu(jlResName.getText());
-        menuFrame.setVisible(true);
+//        orderList.clear();
+//        clearTable();
+//        menuFrame.setRes(res);
+//        menuFrame.getMenu(res);
+//        menuFrame.setVisible(true);
+        resFrame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jbMenuActionPerformed
+
+    private void jbConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this,"Your order is  submited. "//Now you will process to Payment."
+                , "Success", JOptionPane.INFORMATION_MESSAGE);
+        //FPayment payFrame;
+        //payFrame = new FPayment(get_Order());
+    }//GEN-LAST:event_jbConfirmActionPerformed
+
+    private void tbOrderConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbOrderConfirmMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbOrderConfirmMouseClicked
 
     /**
      * @param args the command line arguments
